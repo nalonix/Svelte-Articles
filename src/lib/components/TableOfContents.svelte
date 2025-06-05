@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+	import { createSlug } from '$lib/utils';
+
 	export let headings = [];
 
 	// Function to build a nested structure
@@ -12,7 +14,11 @@
 			}
 
 			const parent = stack[stack.length - 1].node;
-			const newNode = { ...heading, children: [] };
+			const newNode = { 
+				...heading, 
+				slug: createSlug(heading.text),
+				children: [] 
+			};
 			parent.children.push(newNode);
 			stack.push({ node: newNode, level: heading.level });
 		}
