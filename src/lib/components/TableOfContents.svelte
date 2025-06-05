@@ -22,7 +22,7 @@
 			parent.children.push(newNode);
 			stack.push({ node: newNode, level: heading.level });
 		}
-
+ 
 		return root.children;
 	}
 

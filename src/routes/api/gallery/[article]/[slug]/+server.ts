@@ -1,6 +1,7 @@
+// src/routes/api/gallery/[article]/[slug]/+server.ts
+
 import { json } from '@sveltejs/kit';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import { galleryManifest } from '$lib/imageManifest'; // Import the build-time manifest
 
 interface Params {
     slug: string;
@@ -9,16 +10,13 @@ interface Params {
 
 export async function GET({ params }: { params: Params }) {
     const { slug, article } = params;
-    const galleryPath = path.join(process.cwd(), 'static', article, 'media', 'images', 'gallery', slug);
 
-    try {
-        const files = await fs.readdir(galleryPath);
-        const imageFiles = files.filter((file) => /\.(jpg|png|gif|svg|webp)$/i.test(file));
-        const imageUrls = imageFiles.map((file) => `/${article}/media/images/gallery/${slug}/${file}`);
-
+    // Retrieve images from the pre-generated manifest
+    if (galleryManifest[article] && galleryManifest[article][slug]) {
+        const imageUrls = galleryManifest[article][slug];
         return json(imageUrls);
-    } catch (error) {
-        console.error('Error reading gallery directory:', error);
-        return json({ error: 'Failed to load gallery images' }, { status: 500 });
+    } else {
+        // Return 404 if the specific gallery is not found
+        return json({ error: 'Gallery not found or no images defined' }, { status: 404 });
     }
-} 
+}

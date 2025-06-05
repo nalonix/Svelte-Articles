@@ -20,6 +20,8 @@
 	onMount(async () => {
 		images = [];
 
+
+
 		try {
 			const res = await fetch(`/api/gallery/${article}/${id}`);
 
