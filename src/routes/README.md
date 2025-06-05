@@ -1,0 +1,1 @@
+Fetches articles' meta data for the home page, and lists them. 

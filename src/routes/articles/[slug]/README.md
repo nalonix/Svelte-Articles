@@ -1,0 +1,1 @@
+This route fetches a single article using the slug and displays for reading. 

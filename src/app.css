@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	scroll-behavior: smooth;
+}
+
+.primary-button {
+	@apply inline-flex items-center justify-center w-full text-center bg-black border border-black text-white rounded-full no-underline px-8 py-2 whitespace-nowrap transition-all duration-200;
+}
+
+.primary-buttonbtn:hover {
+	@apply invert border border-zinc-600;
+}
+
+.secondary-button {
+	@apply inline-flex items-center justify-center text-center bg-white border border-black text-black rounded-full no-underline px-8 py-2 whitespace-nowrap transition-all duration-200;
+}
+
+.secondary-button:hover {
+	@apply bg-black text-white;
+}
+
+.tertiary-button {
+	@apply inline-flex items-center justify-center text-center bg-transparent border border-transparent text-black rounded-full no-underline px-8 py-2 whitespace-nowrap transition-all duration-200;
+}
+
+.tertiary-button:hover {
+	@apply border-black bg-black text-white;
+}
+
+.card {
+	box-shadow:
+		rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+		rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+	transition: all 0.3s ease-in-out;
+	@apply rounded-3xl h-fit w-[95%] lg:w-[98%] overflow-hidden;
+}
+
+.tag {
+	@apply py-[1px] px-2 text-nowrap bg-gray-200 border-gray-300 rounded-full uppercase text-[10px] border select-none;
+}
+.tag.active {
+	@apply bg-zinc-800 border-zinc-900 text-white;
+}
+
+/* Markdown styling  */
+
+h1 {
+	@apply text-4xl;
+}
+
+h2 {
+	@apply text-2xl sm:text-3xl;
+}
+
+h3 {
+	@apply text-xl sm:text-2xl;
+}
+
+h4 {
+	@apply text-lg sm:text-xl;
+}
+
+h1,
+h2,
+h3,
+h3,
+h4,
+h5,
+h6 {
+	@apply pb-1 mt-5;
+}
+
+p {
+	@apply pt-1 pb-1;
+}
+p,
+li {
+	@apply text-sm;
+}
+
+ol {
+	@apply list-decimal pl-2 sm:pl-4 pt-2;
+}
+
+ul {
+	@apply list-disc pl-2 sm:pl-4;
+}
+
+li {
+	@apply list-inside py-[1.5px];
+}
+
+code {
+	@apply text-red-600;
+}
+strong {
+	@apply font-semibold;
+}
+
+link_underline:hover {
+	@apply underline;
+}
